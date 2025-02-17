@@ -1,27 +1,18 @@
 package ru.netology.game;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Game {
-    List<Player> players = new ArrayList<>();
+    private final Map<String, Player> players = new HashMap<>();
 
     public void register(Player player) {
-        players.add(player);
-    }
-
-    private Player searchPlayer(String name) {
-        for (Player player : players) {
-            if (player.getName().equals(name)) {
-                return player;
-            }
-        }
-        return null;
+        players.put(player.getName(), player);
     }
 
     public int round(String playerName1, String playerName2) {
-        Player player1 = searchPlayer(playerName1);
-        Player player2 = searchPlayer(playerName2);
+        Player player1 = players.get(playerName1);
+        Player player2 = players.get(playerName2);
 
         if (player1 == null) {
             throw new NotRegisteredException(playerName1);

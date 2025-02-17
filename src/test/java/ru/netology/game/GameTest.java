@@ -69,8 +69,6 @@ public class GameTest {
             game.round("Аня", "Коля");
         });
     }
-
-
 }
 
 
